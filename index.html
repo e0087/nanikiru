@@ -6,88 +6,77 @@
   <title>麻雀待ち判定ツール【統一回答ボタンエリア・間隔調整】</title>
   <script src="tileData.js"></script>
   <style>
-    /* 全体を画面いっぱいにし、flexで上下に配置 */
+    /* body自体を中央配置する */
     body {
       display: flex;
-      /* flexコンテナにする */
-      flex-direction: column;
-      /* 上下方向に並べる */
-      height: 100vh;
-      /* 画面全体の高さ */
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       margin: 0;
-      padding: 0;
+      padding: 10px;
+      background-color: #f5f5f5;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #333;
       box-sizing: border-box;
       text-align: center;
-      background-color: #f5f5f5;
-      color: #333;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    /* ヘッダ・中央・フッタの３エリア */
+    /* コンテンツ全体を包むラッパー。最大幅と中央寄せ */
+    .wrapper {
+      width: 100%;
+      max-width: 800px;
+      /* 必要に応じて調整 */
+      margin: 0 auto;
+    }
+
+    /* ヘッダー（タイトル＋牌姿） */
     .header {
-      /* タイトルと牌姿をまとめて上部に配置 */
-      padding: 10px;
+      margin-bottom: 50px;
     }
 
-    .middle {
-      /* 回答ボタンと結果表示を中央に配置 */
-      flex: 1;
-      /* 余った領域をすべて使う */
-      display: flex;
-      /* 中身をさらにflexで上下配置 */
-      flex-direction: column;
-      justify-content: center;
-      /* 垂直方向(上下)の中央揃え */
-      align-items: center;
-      /* 水平方向(左右)の中央揃え */
-      padding: 10px;
-    }
-
-    .footer {
-      /* 決定・次へボタンを下部に固定 */
-      padding: 10px;
-    }
-
-    /* タイトル */
     .header h2 {
-      margin: 10px 0;
+      margin: 5px 0;
+      font-size: 22px;
     }
 
-    /* 牌表示領域 */
+    /* 牌姿表示エリア */
     #tileDisplay {
-      margin-top: 10px;
+      margin: 50px 0;
     }
 
     #tileDisplay img {
       display: inline-block;
-      margin: 0 2px;
+      margin: 2px;
       padding: 0;
       border: none;
       vertical-align: middle;
       width: 20vw;
-      /* スマホ向けにviewport幅の20% */
       max-width: 80px;
-      /* 大きすぎないように制限 */
       height: auto;
     }
 
-    /* 回答ボタンエリア */
+    /* 中央エリア（回答ボタン＋結果表示） */
+    .middle {
+      height:250px;
+      margin-bottom: 0px;
+    }
+
     #candidateButtons {
-      margin: 10px 0;
-      text-align: center;
+      margin: 5px 0;
       width: 100%;
+      text-align: center;
     }
 
     #candidateButtons button {
       width: 15vw;
       /* 幅を15vwに */
       max-width: 60px;
-      /* 最大60pxに制限 */
+      /* 最大60px */
       height: auto;
       background: none;
       border: none;
       padding: 0;
-      margin: 5px;
+      margin: 2px;
       cursor: pointer;
       opacity: 0.5;
       border-radius: 8px;
@@ -111,13 +100,12 @@
       cursor: default;
     }
 
-    /* 結果表示 */
+    /* 結果表示エリア */
     #result {
-      margin: 10px 0;
-      font-size: 18px;
+      margin: 5px 0;
+      font-size: 16px;
       font-weight: bold;
-      min-height: 40px;
-      /* 高さを確保して、画面が動きすぎないように */
+      min-height: 30px;
     }
 
     #result.correct {
@@ -128,18 +116,21 @@
       color: red;
     }
 
-    /* フッタ（決定・次へボタン） */
+    /* フッター（決定・次へボタン） */
+    .footer {
+      margin-bottom: 10px;
+    }
+
     #actionButtons {
       text-align: center;
     }
 
     #actionButtons button.action {
       width: 40vw;
-      max-width: 200px;
-      /* ボタンが大きくなりすぎないよう制限 */
-      margin: 10px 5vw;
-      padding: 12px;
-      font-size: 18px;
+      max-width: 150px;
+      margin: 5px auto;
+      padding: 8px;
+      font-size: 16px;
       border: none;
       border-radius: 4px;
       background-color: #007BFF;
@@ -160,22 +151,19 @@
 </head>
 
 <body>
-  <!-- ヘッダエリア：タイトル、牌姿 -->
-  <div class="header">
-    <h2>麻雀何待ち暗記パターン</h2>
-    <div id="tileDisplay"></div>
-  </div>
-
-  <!-- 中央エリア：回答ボタン、正解／不正解表示 -->
-  <div class="middle">
-    <div id="candidateButtons"></div>
-    <div id="result"></div>
-  </div>
-
-  <!-- フッタエリア：決定、次へボタン -->
-  <div class="footer" id="actionButtons">
-    <button id="submitAnswer" class="action">決定</button>
-    <button id="nextProblem" class="action" style="display:none;">次へ</button>
+  <div class="wrapper">
+    <div class="header">
+      <h2>麻雀何待ち暗記パターン</h2>
+      <div id="tileDisplay"></div>
+    </div>
+    <div class="middle">
+      <div id="candidateButtons"></div>
+      <div id="result"></div>
+    </div>
+    <div class="footer" id="actionButtons">
+      <button id="submitAnswer" class="action">決定</button>
+      <button id="nextProblem" class="action" style="display:none;">次へ</button>
+    </div>
   </div>
 
   <script>
