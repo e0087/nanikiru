@@ -6,59 +6,81 @@
   <title>麻雀待ち判定ツール【統一回答ボタンエリア・間隔調整】</title>
   <script src="tileData.js"></script>
   <style>
-    /* ベースデザイン */
+    /* 全体を画面いっぱいにし、flexで上下に配置 */
     body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 10px;
-      width: 100vw;
+      display: flex;
+      /* flexコンテナにする */
+      flex-direction: column;
+      /* 上下方向に並べる */
       height: 100vh;
+      /* 画面全体の高さ */
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       text-align: center;
+      background-color: #f5f5f5;
       color: #333;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
-    /* 各エリアを画面いっぱいに表示 */
-    #tileDisplay,
-    #candidateButtons,
-    #actionButtons,
-    #result {
-      width: 100%;
-      box-sizing: border-box;
+    /* ヘッダ・中央・フッタの３エリア */
+    .header {
+      /* タイトルと牌姿をまとめて上部に配置 */
+      padding: 10px;
     }
 
-    h2 {
-      margin-bottom: 20px;
+    .middle {
+      /* 回答ボタンと結果表示を中央に配置 */
+      flex: 1;
+      /* 余った領域をすべて使う */
+      display: flex;
+      /* 中身をさらにflexで上下配置 */
+      flex-direction: column;
+      justify-content: center;
+      /* 垂直方向(上下)の中央揃え */
+      align-items: center;
+      /* 水平方向(左右)の中央揃え */
+      padding: 10px;
     }
 
-    /* 牌表示エリア */
+    .footer {
+      /* 決定・次へボタンを下部に固定 */
+      padding: 10px;
+    }
+
+    /* タイトル */
+    .header h2 {
+      margin: 10px 0;
+    }
+
+    /* 牌表示領域 */
     #tileDisplay {
-      margin-bottom: 20px;
+      margin-top: 10px;
     }
 
     #tileDisplay img {
       display: inline-block;
-      margin: 0;
+      margin: 0 2px;
       padding: 0;
       border: none;
       vertical-align: middle;
       width: 20vw;
+      /* スマホ向けにviewport幅の20% */
       max-width: 80px;
+      /* 大きすぎないように制限 */
       height: auto;
     }
 
-    /* 回答候補ボタンエリア */
+    /* 回答ボタンエリア */
     #candidateButtons {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      display: inline-block;
+      margin: 10px 0;
       text-align: center;
+      width: 100%;
     }
 
     #candidateButtons button {
       width: 15vw;
-      /* 幅を15vwに変更 */
+      /* 幅を15vwに */
       max-width: 60px;
       /* 最大60pxに制限 */
       height: auto;
@@ -89,13 +111,32 @@
       cursor: default;
     }
 
-    /* 決定・次へボタンエリア */
+    /* 結果表示 */
+    #result {
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: bold;
+      min-height: 40px;
+      /* 高さを確保して、画面が動きすぎないように */
+    }
+
+    #result.correct {
+      color: green;
+    }
+
+    #result.incorrect {
+      color: red;
+    }
+
+    /* フッタ（決定・次へボタン） */
     #actionButtons {
-      margin-bottom: 20px;
+      text-align: center;
     }
 
     #actionButtons button.action {
       width: 40vw;
+      max-width: 200px;
+      /* ボタンが大きくなりすぎないよう制限 */
       margin: 10px 5vw;
       padding: 12px;
       font-size: 18px;
@@ -115,41 +156,27 @@
       background-color: #aaa;
       cursor: default;
     }
-
-    /* 結果表示 */
-    #result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    #result.correct {
-      color: green;
-    }
-
-    #result.incorrect {
-      color: red;
-    }
   </style>
 </head>
 
 <body>
-  <h2>麻雀何待ち暗記パターン</h2>
+  <!-- ヘッダエリア：タイトル、牌姿 -->
+  <div class="header">
+    <h2>麻雀何待ち暗記パターン</h2>
+    <div id="tileDisplay"></div>
+  </div>
 
-  <!-- 牌姿表示エリア -->
-  <div id="tileDisplay"></div>
+  <!-- 中央エリア：回答ボタン、正解／不正解表示 -->
+  <div class="middle">
+    <div id="candidateButtons"></div>
+    <div id="result"></div>
+  </div>
 
-  <!-- 回答ボタンエリア（統一エリア） -->
-  <div id="candidateButtons"></div>
-
-  <!-- 決定・次へボタンエリア -->
-  <div id="actionButtons">
+  <!-- フッタエリア：決定、次へボタン -->
+  <div class="footer" id="actionButtons">
     <button id="submitAnswer" class="action">決定</button>
     <button id="nextProblem" class="action" style="display:none;">次へ</button>
   </div>
-
-  <!-- 結果表示 -->
-  <div id="result"></div>
 
   <script>
     let currentHand = null;
