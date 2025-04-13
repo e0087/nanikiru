@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>麻雀待ち判定ツール【統一回答ボタンエリア・間隔調整】</title>
@@ -10,17 +11,26 @@
       background-color: #f5f5f5;
       margin: 0;
       padding: 20px;
+      width: 100vw;
+      box-sizing: border-box;
       text-align: center;
       color: #333;
     }
+
+    #tileDisplay {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
     h2 {
       margin-bottom: 20px;
     }
-    
+
     /* 牌表示エリア：余白なしで横並び、下にスペース追加 */
     #tileDisplay {
       margin-bottom: 20px;
     }
+
     #tileDisplay img {
       display: inline-block;
       margin: 0;
@@ -30,7 +40,7 @@
       width: 50px;
       height: auto;
     }
-    
+
     /* 回答ボタンエリア：一箇所に統一表示、下にスペース追加 */
     #candidateButtons {
       margin-top: 20px;
@@ -38,6 +48,7 @@
       display: inline-block;
       text-align: center;
     }
+
     #candidateButtons button {
       background: none;
       border: none;
@@ -47,19 +58,22 @@
       opacity: 0.5;
       transition: opacity 0.2s, border 0.2s;
     }
+
     #candidateButtons button.active {
       opacity: 1;
       border: 2px solid #007BFF;
       border-radius: 4px;
     }
+
     #candidateButtons button:disabled {
       cursor: default;
     }
-    
+
     /* 決定・次へボタンエリア */
     #actionButtons {
       margin-bottom: 20px;
     }
+
     button.action {
       margin: 20px 10px;
       padding: 10px 20px;
@@ -71,28 +85,33 @@
       cursor: pointer;
       transition: background-color 0.2s;
     }
+
     button.action:hover {
       background-color: #0056b3;
     }
+
     button.action:disabled {
       background-color: #aaa;
       cursor: default;
     }
-    
+
     /* 結果表示 */
     #result {
       margin-top: 20px;
       font-size: 18px;
       font-weight: bold;
     }
+
     #result.correct {
       color: green;
     }
+
     #result.incorrect {
       color: red;
     }
   </style>
 </head>
+
 <body>
   <h2>麻雀何待ち暗記パターン</h2>
 
@@ -117,155 +136,155 @@
       {
         id: "pattern1",
         variants: [
-          { tiles: "23456zz", answer: ["1","4","7"] },
-          { tiles: "34567zz", answer: ["2","5","8"] },
-          { tiles: "45678zz", answer: ["3","6","9"] }
+          { tiles: "23456zz", answer: ["1", "4", "7"] },
+          { tiles: "34567zz", answer: ["2", "5", "8"] },
+          { tiles: "45678zz", answer: ["3", "6", "9"] }
         ]
       },
       {
         id: "pattern2",
         variants: [
-          { tiles: "2345678", answer: ["2","5","8"] }
+          { tiles: "2345678", answer: ["2", "5", "8"] }
         ]
       },
       {
         id: "pattern3",
         variants: [
-          { tiles: "2345567", answer: ["2","5","8"] },
-          { tiles: "3456678", answer: ["3","6","9"] },
-          { tiles: "2344567", answer: ["1","4","7"] },
-          { tiles: "3455678", answer: ["2","5","8"] }
+          { tiles: "2345567", answer: ["2", "5", "8"] },
+          { tiles: "3456678", answer: ["3", "6", "9"] },
+          { tiles: "2344567", answer: ["1", "4", "7"] },
+          { tiles: "3455678", answer: ["2", "5", "8"] }
         ]
       },
       {
         id: "pattern4",
         variants: [
-          { tiles: "23444zz", answer: ["1","4","z"] },
-          { tiles: "34555zz", answer: ["2","5","z"] },
-          { tiles: "45666zz", answer: ["3","6","z"] },
-          { tiles: "56777zz", answer: ["4","7","z"] },
-          { tiles: "67888zz", answer: ["5","8","z"] },
-          { tiles: "78999zz", answer: ["6","9","z"] },
-          { tiles: "11123zz", answer: ["1","4","z"] },
-          { tiles: "22234zz", answer: ["2","5","z"] },
-          { tiles: "33345zz", answer: ["3","6","z"] },
-          { tiles: "44456zz", answer: ["4","7","z"] },
-          { tiles: "55567zz", answer: ["5","8","z"] },
-          { tiles: "66678zz", answer: ["6","9","z"] }
+          { tiles: "23444zz", answer: ["1", "4", "z"] },
+          { tiles: "34555zz", answer: ["2", "5", "z"] },
+          { tiles: "45666zz", answer: ["3", "6", "z"] },
+          { tiles: "56777zz", answer: ["4", "7", "z"] },
+          { tiles: "67888zz", answer: ["5", "8", "z"] },
+          { tiles: "78999zz", answer: ["6", "9", "z"] },
+          { tiles: "11123zz", answer: ["1", "4", "z"] },
+          { tiles: "22234zz", answer: ["2", "5", "z"] },
+          { tiles: "33345zz", answer: ["3", "6", "z"] },
+          { tiles: "44456zz", answer: ["4", "7", "z"] },
+          { tiles: "55567zz", answer: ["5", "8", "z"] },
+          { tiles: "66678zz", answer: ["6", "9", "z"] }
         ]
       },
       {
         id: "pattern5",
         variants: [
-          { tiles: "2333456", answer: ["1","4","7","2"] },
-          { tiles: "3444567", answer: ["2","5","8","3"] },
-          { tiles: "4555678", answer: ["3","6","9","4"] }
+          { tiles: "2333456", answer: ["1", "4", "7", "2"] },
+          { tiles: "3444567", answer: ["2", "5", "8", "3"] },
+          { tiles: "4555678", answer: ["3", "6", "9", "4"] }
         ]
       },
       {
         id: "pattern6",
         variants: [
-          { tiles: "2223345", answer: ["1","4","3","6"] },
-          { tiles: "3334456", answer: ["2","5","4","7"] },
-          { tiles: "4445567", answer: ["3","6","5","8"] },
-          { tiles: "5556678", answer: ["4","7","6","9"] }
+          { tiles: "2223345", answer: ["1", "4", "3", "6"] },
+          { tiles: "3334456", answer: ["2", "5", "4", "7"] },
+          { tiles: "4445567", answer: ["3", "6", "5", "8"] },
+          { tiles: "5556678", answer: ["4", "7", "6", "9"] }
         ]
       },
       {
         id: "pattern7",
         variants: [
-          { tiles: "2223445", answer: ["3","6","4"] },
-          { tiles: "3334556", answer: ["4","7","5"] },
-          { tiles: "4445667", answer: ["5","8","6"] },
-          { tiles: "5556778", answer: ["6","9","7"] }
+          { tiles: "2223445", answer: ["3", "6", "4"] },
+          { tiles: "3334556", answer: ["4", "7", "5"] },
+          { tiles: "4445667", answer: ["5", "8", "6"] },
+          { tiles: "5556778", answer: ["6", "9", "7"] }
         ]
       },
       {
         id: "pattern8",
         variants: [
-          { tiles: "2223456", answer: ["1","4","7","3","6"] },
-          { tiles: "3334567", answer: ["2","5","8","4","7"] },
-          { tiles: "4445678", answer: ["3","6","9","5","8"] }
+          { tiles: "2223456", answer: ["1", "4", "7", "3", "6"] },
+          { tiles: "3334567", answer: ["2", "5", "8", "4", "7"] },
+          { tiles: "4445678", answer: ["3", "6", "9", "5", "8"] }
         ]
       },
       {
         id: "pattern9",
         variants: [
-          { tiles: "1112346", answer: ["5","6"] },
-          { tiles: "2223457", answer: ["6","7"] },
-          { tiles: "3334568", answer: ["7","8"] },
-          { tiles: "4445679", answer: ["8","9"] }
+          { tiles: "1112346", answer: ["5", "6"] },
+          { tiles: "2223457", answer: ["6", "7"] },
+          { tiles: "3334568", answer: ["7", "8"] },
+          { tiles: "4445679", answer: ["8", "9"] }
         ]
       },
       {
         id: "pattern10",
         variants: [
-          { tiles: "1113345", answer: ["3","6","2"] },
-          { tiles: "2224456", answer: ["4","7","3"] },
-          { tiles: "3335567", answer: ["5","8","4"] },
-          { tiles: "4446678", answer: ["6","9","5"] }
+          { tiles: "1113345", answer: ["3", "6", "2"] },
+          { tiles: "2224456", answer: ["4", "7", "3"] },
+          { tiles: "3335567", answer: ["5", "8", "4"] },
+          { tiles: "4446678", answer: ["6", "9", "5"] }
         ]
       },
       {
         id: "pattern11",
         variants: [
-          { tiles: "1113456", answer: ["3","6","2"] },
-          { tiles: "2224567", answer: ["4","7","3"] },
-          { tiles: "3335678", answer: ["5","8","4"] },
-          { tiles: "4446789", answer: ["6","9","5"] }
+          { tiles: "1113456", answer: ["3", "6", "2"] },
+          { tiles: "2224567", answer: ["4", "7", "3"] },
+          { tiles: "3335678", answer: ["5", "8", "4"] },
+          { tiles: "4446789", answer: ["6", "9", "5"] }
         ]
       },
       {
         id: "pattern12",
         variants: [
-          { tiles: "1112233", answer: ["1","4","2","3"] },
-          { tiles: "2223344", answer: ["2","5","3","4"] },
-          { tiles: "3334455", answer: ["3","6","4","5"] },
-          { tiles: "4445566", answer: ["4","7","5","6"] },
-          { tiles: "5556677", answer: ["5","8","6","7"] },
-          { tiles: "6667788", answer: ["6","9","7","8"] }
+          { tiles: "1112233", answer: ["1", "4", "2", "3"] },
+          { tiles: "2223344", answer: ["2", "5", "3", "4"] },
+          { tiles: "3334455", answer: ["3", "6", "4", "5"] },
+          { tiles: "4445566", answer: ["4", "7", "5", "6"] },
+          { tiles: "5556677", answer: ["5", "8", "6", "7"] },
+          { tiles: "6667788", answer: ["6", "9", "7", "8"] }
         ]
       },
       {
         id: "pattern13",
         variants: [
-          { tiles: "1122233", answer: ["2","1","3"] },
-          { tiles: "2233344", answer: ["3","2","4"] },
-          { tiles: "3344455", answer: ["4","3","5"] },
-          { tiles: "4455566", answer: ["5","4","6"] },
-          { tiles: "5566677", answer: ["6","5","7"] },
-          { tiles: "6677788", answer: ["7","6","8"] }
+          { tiles: "1122233", answer: ["2", "1", "3"] },
+          { tiles: "2233344", answer: ["3", "2", "4"] },
+          { tiles: "3344455", answer: ["4", "3", "5"] },
+          { tiles: "4455566", answer: ["5", "4", "6"] },
+          { tiles: "5566677", answer: ["6", "5", "7"] },
+          { tiles: "6677788", answer: ["7", "6", "8"] }
         ]
       },
       {
         id: "pattern14",
         variants: [
-          { tiles: "2223444", answer: ["1","2","3","4","5"] },
-          { tiles: "3334555", answer: ["2","3","4","5","6"] },
-          { tiles: "4445666", answer: ["3","4","5","6","7"] },
-          { tiles: "5556777", answer: ["4","5","6","7","8"] },
-          { tiles: "6667888", answer: ["5","6","7","8","9"] }
+          { tiles: "2223444", answer: ["1", "2", "3", "4", "5"] },
+          { tiles: "3334555", answer: ["2", "3", "4", "5", "6"] },
+          { tiles: "4445666", answer: ["3", "4", "5", "6", "7"] },
+          { tiles: "5556777", answer: ["4", "5", "6", "7", "8"] },
+          { tiles: "6667888", answer: ["5", "6", "7", "8", "9"] }
         ]
       },
       {
         id: "pattern15",
         variants: [
-          { tiles: "1112223", answer: ["1","2","3","4"] },
-          { tiles: "2223334", answer: ["2","3","4","5"] },
-          { tiles: "3334445", answer: ["3","4","5","6"] },
-          { tiles: "4445556", answer: ["4","5","6","7"] },
-          { tiles: "5556667", answer: ["5","6","7","8"] },
-          { tiles: "6667778", answer: ["6","7","8","9"] }
+          { tiles: "1112223", answer: ["1", "2", "3", "4"] },
+          { tiles: "2223334", answer: ["2", "3", "4", "5"] },
+          { tiles: "3334445", answer: ["3", "4", "5", "6"] },
+          { tiles: "4445556", answer: ["4", "5", "6", "7"] },
+          { tiles: "5556667", answer: ["5", "6", "7", "8"] },
+          { tiles: "6667778", answer: ["6", "7", "8", "9"] }
         ]
       },
       {
         id: "pattern16",
         variants: [
-          { tiles: "1113555", answer: ["2","3","4"] },
-          { tiles: "2224666", answer: ["3","4","5"] },
-          { tiles: "3335777", answer: ["4","5","6"] },
-          { tiles: "4446888", answer: ["5","6","7"] },
-          { tiles: "5557999", answer: ["6","7","8"] }
+          { tiles: "1113555", answer: ["2", "3", "4"] },
+          { tiles: "2224666", answer: ["3", "4", "5"] },
+          { tiles: "3335777", answer: ["4", "5", "6"] },
+          { tiles: "4446888", answer: ["5", "6", "7"] },
+          { tiles: "5557999", answer: ["6", "7", "8"] }
         ]
       }
     ];
@@ -279,7 +298,7 @@
     let numericSuit = "";
     let honorType = "";
 
-    window.onload = function() {
+    window.onload = function () {
       loadCurrentHand();
     };
 
@@ -292,7 +311,7 @@
       document.getElementById("nextProblem").style.display = "none";
       document.getElementById("submitAnswer").style.display = "inline-block";
       document.getElementById("candidateButtons").innerHTML = "";
-      
+
       // カテゴリから出題
       const category = shuffledCategories[currentCategoryIndex];
       // variants 配列が1件より多ければランダムに選択、そうでなければ1件固定
@@ -400,47 +419,31 @@
           img.src = "images/" + prefix + n + ".gif";
           img.alt = String(n);
           btn.appendChild(img);
-          btn.addEventListener("click", function() {
+          btn.addEventListener("click", function () {
             btn.classList.toggle("active");
           });
           container.appendChild(btn);
         }
       }
-      
-      // 字牌候補ボタン（牌姿に字牌が含まれている場合のみ）
+
+      // 字牌候補ボタン（牌姿に字牌が含まれている場合のみ、常に1種類のみ生成）
       if (parsed.hasHonor) {
-        if (currentHand.answer.includes("z")) {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.setAttribute("data-value", "z");
-          const img = document.createElement("img");
-          img.src = "images/zi" + honorType + ".gif";
-          img.alt = "z";
-          btn.appendChild(img);
-          btn.addEventListener("click", function() {
-            btn.classList.toggle("active");
-          });
-          container.appendChild(btn);
-        } else {
-          for (let n = 1; n <= 7; n++) {
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.setAttribute("data-value", String(n));
-            const img = document.createElement("img");
-            img.src = "images/zi" + n + ".gif";
-            img.alt = String(n);
-            btn.appendChild(img);
-            btn.addEventListener("click", function() {
-              btn.classList.toggle("active");
-            });
-            container.appendChild(btn);
-          }
-        }
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.setAttribute("data-value", "z");
+        const img = document.createElement("img");
+        img.src = "images/zi" + honorType + ".gif";
+        img.alt = "z";
+        btn.appendChild(img);
+        btn.addEventListener("click", function () {
+          btn.classList.toggle("active");
+        });
+        container.appendChild(btn);
       }
     }
 
     // 決定ボタン押下時：active 状態のボタンの data-value を採用して解答判定
-    document.getElementById("submitAnswer").addEventListener("click", function() {
+    document.getElementById("submitAnswer").addEventListener("click", function () {
       const activeBtns = document.querySelectorAll("#candidateButtons button.active");
       let userAnswer = [];
       activeBtns.forEach(btn => {
@@ -473,7 +476,7 @@
         else if (numericSuit === "p") prefix = "pin";
         else if (numericSuit === "s") prefix = "sou";
         currentHand.answer.forEach(n => {
-          if(n === "z"){
+          if (n === "z") {
             const img = document.createElement("img");
             img.src = "images/zi" + honorType + ".gif";
             img.alt = "z";
@@ -492,7 +495,7 @@
       } else if (parsed.hasHonor) {
         currentHand.answer.forEach(n => {
           const img = document.createElement("img");
-          if(n === "z"){
+          if (n === "z") {
             img.src = "images/zi" + honorType + ".gif";
           } else {
             img.src = "images/zi" + n + ".gif";
@@ -507,7 +510,7 @@
     }
 
     // 次へボタン押下：次の問題へ移行（全カテゴリ一巡後、再シャッフルしてループ）
-    document.getElementById("nextProblem").addEventListener("click", function() {
+    document.getElementById("nextProblem").addEventListener("click", function () {
       currentCategoryIndex++;
       if (currentCategoryIndex >= shuffledCategories.length) {
         currentCategoryIndex = 0;
@@ -517,4 +520,5 @@
     });
   </script>
 </body>
+
 </html>
