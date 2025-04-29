@@ -98,8 +98,8 @@
 
     /* 結果表示エリア */
     #result {
-      margin: 5px 0;
-      font-size: 16px;
+      margin: 15px 0;
+      font-size: 30px;
       font-weight: bold;
       min-height: 30px;
     }
@@ -114,7 +114,7 @@
 
     /* フッター（決定・次へボタン） */
     .footer {
-      margin-bottom: 10px;
+      margin: 15px;
     }
 
     #actionButtons {
@@ -228,18 +228,18 @@
     }
 
     // 画像ファイル名生成関数  
-    // 数牌の場合は numericSuit に基づく画像（例："manX.gif"、"pinX.gif"、"souX.gif"）  
-    // 字牌の場合は "zi" + 数字 + ".gif"
+    // 数牌の場合は numericSuit に基づく画像（例："manX.png"、"pinX.png"、"souX.png"）  
+    // 字牌の場合は "zi" + 数字 + ".png"
     function tileToImage(tile) {
       const num = tile.charAt(0);
       const suit = tile.charAt(1);
       let filename = "";
       if (suit === "m" || suit === "p" || suit === "s") {
-        if (suit === "m") filename = "man" + num + ".gif";
-        else if (suit === "p") filename = "pin" + num + ".gif";
-        else if (suit === "s") filename = "sou" + num + ".gif";
+        if (suit === "m") filename = "man" + num + ".png";
+        else if (suit === "p") filename = "pin" + num + ".png";
+        else if (suit === "s") filename = "sou" + num + ".png";
       } else if (suit === "z") {
-        filename = "zi" + num + ".gif";
+        filename = "zi" + num + ".png";
       }
       return "images/" + filename;
     }
@@ -289,7 +289,7 @@
           btn.setAttribute("data-value", String(n));
           let prefix = (numericSuit === "m") ? "man" : (numericSuit === "p") ? "pin" : "sou";
           const img = document.createElement("img");
-          img.src = "images/" + prefix + n + ".gif";
+          img.src = "images/" + prefix + n + ".png";
           img.alt = String(n);
           btn.appendChild(img);
           btn.addEventListener("click", function () {
@@ -305,7 +305,7 @@
         btn.type = "button";
         btn.setAttribute("data-value", "z");
         const img = document.createElement("img");
-        img.src = "images/zi" + honorType + ".gif";
+        img.src = "images/zi" + honorType + ".png";
         img.alt = "z";
         btn.appendChild(img);
         btn.addEventListener("click", function () {
@@ -351,14 +351,14 @@
         currentHand.answer.forEach(n => {
           if (n === "z") {
             const img = document.createElement("img");
-            img.src = "images/zi" + honorType + ".gif";
+            img.src = "images/zi" + honorType + ".png";
             img.alt = "z";
             img.style.margin = "5px";
             img.style.width = "50px";
             container.appendChild(img);
           } else {
             const img = document.createElement("img");
-            img.src = "images/" + prefix + n + ".gif";
+            img.src = "images/" + prefix + n + ".png";
             img.alt = n;
             img.style.margin = "5px";
             img.style.width = "50px";
@@ -369,9 +369,9 @@
         currentHand.answer.forEach(n => {
           const img = document.createElement("img");
           if (n === "z") {
-            img.src = "images/zi" + honorType + ".gif";
+            img.src = "images/zi" + honorType + ".png";
           } else {
-            img.src = "images/zi" + n + ".gif";
+            img.src = "images/zi" + n + ".png";
           }
           img.alt = n;
           img.style.margin = "5px";
