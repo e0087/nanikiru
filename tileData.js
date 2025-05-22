@@ -150,12 +150,12 @@ const categories = [
     {
         id: "pattern13",
         variants: [
-            { tiles: "1122233", answer: ["2", "1", "3"] },
-            { tiles: "2233344", answer: ["3", "2", "4"] },
-            { tiles: "3344455", answer: ["4", "3", "5"] },
-            { tiles: "4455566", answer: ["5", "4", "6"] },
-            { tiles: "5566677", answer: ["6", "5", "7"] },
-            { tiles: "6677788", answer: ["7", "6", "8"] }
+            { tiles: "1122233", answer: ["1", "2", "3"] },
+            { tiles: "2233344", answer: ["2", "3", "4"] },
+            { tiles: "3344455", answer: ["3", "4", "5"] },
+            { tiles: "4455566", answer: ["4", "5", "6"] },
+            { tiles: "5566677", answer: ["5", "6", "7"] },
+            { tiles: "6677788", answer: ["6", "7", "8"] }
         ]
     },
     {
@@ -193,6 +193,23 @@ const categories = [
             { tiles: "3335777", answer: ["4", "5", "6"] },
             { tiles: "4446888", answer: ["5", "6", "7"] },
             { tiles: "5557999", answer: ["6", "7", "8"] }
+        ]
+    },
+    {
+        id: "pattern21",
+        variants: [
+            { tiles: "2333zzz", answer: ["1", "4", "2"] },
+            { tiles: "3444zzz", answer: ["2", "5", "3"] },
+            { tiles: "4555zzz", answer: ["3", "6", "4"] },
+            { tiles: "5666zzz", answer: ["4", "7", "5"] },
+            { tiles: "6777zzz", answer: ["5", "8", "6"] },
+            { tiles: "7888zzz", answer: ["6", "9", "7"] },
+            { tiles: "2223zzz", answer: ["1", "4", "9"] },
+            { tiles: "3334zzz", answer: ["2", "5", "4"] },
+            { tiles: "4445zzz", answer: ["3", "6", "5"] },
+            { tiles: "5556zzz", answer: ["4", "7", "6"] },
+            { tiles: "6667zzz", answer: ["5", "8", "7"] },
+            { tiles: "7778zzz", answer: ["6", "9", "8"] }
         ]
     }
 ];
