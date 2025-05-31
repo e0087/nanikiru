@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>麻雀待ち判定ツール【統一回答ボタンエリア・間隔調整】</title>
+  <title>麻雀7枚形待ち暗記用ツール</title>
   <script src="tileData.js"></script>
   <style>
     /* body自体を中央配置する */
@@ -34,7 +34,7 @@
 
     .header h2 {
       margin: 5px 0;
-      font-size: 22px;
+      font-size: 40px;
     }
 
     /* 牌姿表示エリア */
@@ -44,7 +44,6 @@
 
     #tileDisplay img {
       display: inline-block;
-      margin: 2px;
       padding: 0;
       border: none;
       vertical-align: middle;
@@ -98,8 +97,8 @@
 
     /* 結果表示エリア */
     #result {
-      margin: 20px 0;
-      font-size: 30px;
+      margin: 30px 0;
+      font-size: 45px;
       font-weight: bold;
       min-height: 30px;
     }
@@ -114,7 +113,7 @@
 
     /* フッター（決定・次へボタン） */
     .footer {
-      margin-top: 50px;
+      margin-top: 100px;
     }
 
     #actionButtons {
@@ -150,7 +149,7 @@
 <body>
   <div class="wrapper">
     <div class="header">
-      <h2>麻雀何待ち暗記パターン</h2>
+      <h2>麻雀7枚形待ち暗記用ツール</h2>
       <div id="tileDisplay"></div>
     </div>
     <div class="middle">
@@ -329,7 +328,7 @@
         resultDiv.innerHTML = '<span class="correct">正解！</span><br>';
         resultDiv.appendChild(createAnswerImages());
       } else {
-        resultDiv.innerHTML = '<span class="incorrect">不正解</span><br>正しい解答は：<br>';
+        resultDiv.innerHTML = '<span class="incorrect">不正解</span><br>';
         resultDiv.appendChild(createAnswerImages());
       }
       const candidateButtons = document.querySelectorAll("#candidateButtons button");
@@ -354,14 +353,14 @@
             img.src = "images/zi" + honorType + ".png";
             img.alt = "z";
             img.style.margin = "5px";
-            img.style.width = "50px";
+            img.style.width = "70px";
             container.appendChild(img);
           } else {
             const img = document.createElement("img");
             img.src = "images/" + prefix + n + ".png";
             img.alt = n;
             img.style.margin = "5px";
-            img.style.width = "50px";
+            img.style.width = "70px";
             container.appendChild(img);
           }
         });

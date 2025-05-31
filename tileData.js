@@ -196,7 +196,7 @@ const categories = [
         ]
     },
     {
-        id: "pattern21",
+        id: "pattern20",
         variants: [
             { tiles: "2333zzz", answer: ["1", "4", "2"] },
             { tiles: "3444zzz", answer: ["2", "5", "3"] },
